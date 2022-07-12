@@ -29,6 +29,10 @@ class UsersManagement extends CI_Controller {
         $activeitemwhere['status'] = '0';
         $activeItemsCount = $this->users->activeItemList($activeitemwhere);
         $data['activeItemsCount'] = $activeItemsCount->num_rows();
+
+        // 3.4. Count of active products which don't belong to any user.
+        $activeItemsnotbelongstoUserCount = $this->users->activeItemNotbelongstoUserList();
+        $data['activeItemsnotbelongstoUserCount'] = $activeItemsnotbelongstoUserCount->num_rows();
         
         $this->load->view('users/index', $data);
     }

@@ -19,5 +19,11 @@ class Users extends CI_Model {
     function activeItemList ($where) {
         return $this->db->get_where('products', $where);
     }
+
+    function activeItemNotbelongstoUserList () {
+        return $this->db->query("SELECT * FROM `products` WHERE `status` = '0' AND `id` NOT IN (SELECT product_id FROM usersproducts)");
+    }
+
+    
 }
 ?>

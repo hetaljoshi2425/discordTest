@@ -107,6 +107,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<div style="padding:10px;"><b>3.3. Count of all active products (just from products table).</b></div>
 	<div style="padding:10px;"><b>Total active products count : </b><?=$activeItemsCount?></div>
+
+	<div style="padding:10px;"><b>3.4. Count of active products which don't belong to any user.</b></div>
+	<div style="padding:10px;"><b>Total active products count : </b><?=$activeItemsnotbelongstoUserCount?></div>
 </div>
 
 </body>
