@@ -23,11 +23,6 @@ class UsersManagement extends CI_Controller {
         $activewhere['products.status'] = '0';
         $activeItemsCount = $this->users->usersActiveList($activewhere);
         $data['activeItemsCount'] = $activeItemsCount->num_rows();
-
-        // echo "<pre>";
-        // echo $this->db->last_query()."<br>";
-        // print_r($activeItemsCount->num_rows());
-        // exit;
         
         $this->load->view('users/index', $data);
     }
