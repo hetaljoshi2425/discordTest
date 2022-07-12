@@ -41,6 +41,12 @@ class UsersManagement extends CI_Controller {
         $activeUserItemsAmount = $this->users->activeItemsAttachedList($activeamountwhere, $select);
         $data['activeUserItemsAmount'] = $activeUserItemsAmount;
 
+        // 3.6. Summarized price of all active attached products 
+        $activesummarizedwhere = [];
+        $activesummarizedwhere['products.status'] = '0';
+        $activeUserItemssummarizedAmount = $this->users->summarizedItems($activesummarizedwhere);
+        $data['activeUserItemssummarizedAmount'] = $activeUserItemssummarizedAmount;        
+
         $this->load->view('users/index', $data);
     }
 }

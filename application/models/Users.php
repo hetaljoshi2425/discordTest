@@ -25,6 +25,10 @@ class Users extends CI_Model {
         return $this->db->get_where('products', $where);
     }
 
+    function summarizedItems ($where, $select = NULL) {
+        return $this->db->query("SELECT SUM(`usersproducts`.`amount` * `usersproducts`.`quantity`) as 'TotalSummarized' FROM `products` INNER JOIN `usersproducts` ON `usersproducts`.`product_id` = `products`.`id` WHERE `products`.`status` = '0'");
+    }
+
     function activeItemList ($where) {
         return $this->db->get_where('products', $where);
     }
