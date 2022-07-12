@@ -115,10 +115,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div style="padding:10px;"><b>Total Amount : </b><?php if($activeUserItemsAmount->num_rows()>0){ echo $activeUserItemsAmount->row()->totalAmount; }?></div>
 
 	<div style="padding:10px;"><b>3.6. Summarized price of all active attached products.</b></div>
-	
 	<div style="padding:10px;"><b>Total Amount : </b><?php if($activeUserItemssummarizedAmount->num_rows()>0){ 
 		echo $activeUserItemssummarizedAmount->row()->TotalSummarized;		
 	 }?></div>
+
+	<div style="padding:10px;"><b>3.7. Summarized prices of all active products per user.</b></div>
+	<div style="padding:10px;">
+	<?php if($activeUserItemssummarizedAmount->num_rows()>0){ 
+		$html = "<table><tbody><tr><th>Name</th><th>Email</th><th>Total Summarized Amount</th>";
+		foreach($activeUserItemssummarizedAmount->result() as $summarizedUser) {
+			$html .= "<tr><td>".$summarizedUser->name."</td><td>".$summarizedUser->email."</td><td>".$summarizedUser->TotalSummarized."</td>"; 
+			$summarizedUser->name. " | " . $summarizedUser->email. " | " . $summarizedUser->TotalSummarized. " | <br>" ;
+		}
+		$html .= "</tbody></table>";
+		echo $html;
+	 }?>
+	 </div>
 </div>
 
 </body>
