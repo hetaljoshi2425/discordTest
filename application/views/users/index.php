@@ -101,8 +101,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			?>
         </tbody>
     </table>
+
 	<div style="padding:10px;"><b>3.2. Count of active and verified users who have attached active products.</b></div>
-	<div style="padding:10px;"><b>Total active and verified users count : </b><?=$activeItemsCount?></div>
+	<div style="padding:10px;"><b>Total active and verified users count : </b><?=$activeUserItemsCount?></div>
+
+	<div style="padding:10px;"><b>3.3. Count of all active products (just from products table).</b></div>
+	<div style="padding:10px;"><b>Total active products count : </b><?=$activeItemsCount?></div>
 </div>
 
 </body>

@@ -15,5 +15,9 @@ class Users extends CI_Model {
         $this->db->group_by('usersproducts.user_id');
         return $this->db->get_where('users', $where);
     }
+
+    function activeItemList ($where) {
+        return $this->db->get_where('products', $where);
+    }
 }
 ?>
