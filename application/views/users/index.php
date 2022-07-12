@@ -72,6 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container">
+	<div style="padding:10px;"><b>3.1. Count of all active and verified users.</b></div>
 	<table width="100%">
         <thead>
             <tr>
@@ -100,6 +101,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			?>
         </tbody>
     </table>
+	<div style="padding:10px;"><b>3.2. Count of active and verified users who have attached active products.</b></div>
+	<div style="padding:10px;"><b>Total active and verified users count : </b><?=$activeItemsCount?></div>
 </div>
 
 </body>
