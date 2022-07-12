@@ -37,7 +37,7 @@ class UsersManagement extends CI_Controller {
         // 3.5. Amount of all active attached products (if user1 has 3 prod1 and 2 prod2 which are active, user2 has 7 prod2 and 4 prod3, prod3 is inactive, then the amount of active attached products will be 3 + 2 + 7 = 12).
         $activeamountwhere = [];
         $activeamountwhere['products.status'] = '0';
-        $select = "SUM(`products`.amount) as totalAmount";
+        $select = "SUM(`usersproducts`.amount) as totalAmount";
         $activeUserItemsAmount = $this->users->activeItemsAttachedList($activeamountwhere, $select);
         $data['activeUserItemsAmount'] = $activeUserItemsAmount;
 
