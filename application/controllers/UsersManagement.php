@@ -21,7 +21,13 @@ class UsersManagement extends CI_Controller {
         $activewhere['users.status'] = '0';
         $activewhere['users.email_verified_at!='] = NULL;
         $activewhere['products.status'] = '0';
-        $activeItemsCount = $this->users->usersActiveList($activewhere);
+        $activeUserItemsCount = $this->users->usersActiveList($activewhere);
+        $data['activeUserItemsCount'] = $activeUserItemsCount->num_rows();
+
+        // 3.3 Count of all active products (just from products table).
+        $activeitemwhere = [];
+        $activeitemwhere['status'] = '0';
+        $activeItemsCount = $this->users->activeItemList($activeitemwhere);
         $data['activeItemsCount'] = $activeItemsCount->num_rows();
         
         $this->load->view('users/index', $data);
