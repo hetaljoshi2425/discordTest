@@ -110,6 +110,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<div style="padding:10px;"><b>3.4. Count of active products which don't belong to any user.</b></div>
 	<div style="padding:10px;"><b>Total active products count : </b><?=$activeItemsnotbelongstoUserCount?></div>
+
+	<div style="padding:10px;"><b>3.5. Amount of all active attached products.</b></div>
+	<div style="padding:10px;"><b>Total Amount : </b><?php if($activeUserItemsAmount->num_rows()>0){ echo $activeUserItemsAmount->row()->totalAmount; }?></div>
 </div>
 
 </body>

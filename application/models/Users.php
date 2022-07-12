@@ -16,6 +16,15 @@ class Users extends CI_Model {
         return $this->db->get_where('users', $where);
     }
 
+
+    function activeItemsAttachedList ($where, $select = NULL) {
+        if($select!=NULL) {
+            $this->db->select($select);
+        }
+        $this->db->join('usersproducts','usersproducts.product_id = products.id', 'INNER');
+        return $this->db->get_where('products', $where);
+    }
+
     function activeItemList ($where) {
         return $this->db->get_where('products', $where);
     }
