@@ -15,9 +15,6 @@ class UsersManagement extends CI_Controller {
 
         $data = [];
         $data['data'] = $result;
-        // echo "<pre>";
-        // print_r($result->result());
-        // exit;
         $this->load->view('users/index', $data);
     }
 }
