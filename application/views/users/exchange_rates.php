@@ -72,53 +72,58 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container">
-	<div style="padding:10px;"><b>3.8. The exchange rates for USD and RON based on Euro using https://exchangeratesapi.io/.</b></div>
-    <?php
-    if($response->success == true) {
-        ?>
-        <table width="100%">
-            <thead>
-                <tr>
-                    <th colspan="3">EXCHANGE RATES</th>
-                </tr>
-                <tr>
-                    <th colspan="2">Date : <?=$response->date .' '. date('H:i:s', $response->timestamp)?></th>
-                    <th>Base : <?=$response->base?></th>
-                </tr>
-                <tr>
-                    <th colspan="3">Rates</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                if(count($response->rates)>0) {
-                    $counter = 1;
-                    $exist_array = array('USD','RON');
-                    foreach($response->rates as $ratekey => $ratesval) {
-                        if(in_array($ratekey, $exist_array)) {
-                        ?>
-                        <tr>
-                            <td><?=$counter?></td>
-                            <td><?=$ratekey?></td>
-                            <td><?=$ratesval?></td>
-                        </tr>
-                        <?php
-                        }
-                        $counter++;
-                    }
-                }
-                    
-                ?>
-            </tbody>
-        </table>
+    <div style="padding:10px;">
+        <div style="padding:10px;"><b>3.8. The exchange rates for USD and RON based on Euro using https://exchangeratesapi.io/.</b></div>
         <?php
-    } else {
-
-    }
-    ?>
-    
-	
-
+        if(array_key_exists('success', $response)) {
+            if($response->success == true) {
+                ?>
+                <table width="100%">
+                    <thead>
+                        <tr>
+                            <th colspan="3">EXCHANGE RATES</th>
+                        </tr>
+                        <tr>
+                            <th colspan="2">Date : <?=$response->date .' '. date('H:i:s', $response->timestamp)?></th>
+                            <th>Base : <?=$response->base?></th>
+                        </tr>
+                        <tr>
+                            <th colspan="3">Rates</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if(count($response->rates)>0) {
+                            $counter = 1;
+                            $exist_array = array('USD','RON');
+                            foreach($response->rates as $ratekey => $ratesval) {
+                                if(in_array($ratekey, $exist_array)) {
+                                ?>
+                                <tr>
+                                    <td><?=$counter?></td>
+                                    <td><?=$ratekey?></td>
+                                    <td><?=$ratesval?></td>
+                                </tr>
+                                <?php
+                                }
+                                $counter++;
+                            }
+                        }
+                            
+                        ?>
+                    </tbody>
+                </table>
+                <?php
+            }
+        } else {
+            ?>
+            <div style="padding: 16px;background: #e37878;color: white;width: 38%;text-align: center;font-size: 17px;font-weight: bold;">
+                <?=$response->message?>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
 </div>
 
 </body>
